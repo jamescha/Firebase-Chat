@@ -5,8 +5,10 @@
     <title>Firebase Chat</title>
     <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="js/script.js"></script>
-    <link href="css/style.css"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
   </head>
   <body>
     <div>
@@ -15,17 +17,21 @@
       <h2>Username (Email Address)</h2>
       <input type="text" name="userName" id="userName">
       <h2>Password</h2>
-      <input type="text" name="password" id="password">
+      <input type="password" name="password" id="password">
+      <br>
       <button id="login">Login</button>
+      <br>
       <button id="createNewUser" onclick="createUser()">Create New User</button>
       <h1>Message</h1>
+      <h2 id="notice"><h2>
       <hr/>
       <input type="text" name="message" id="message">
     </div>
-    <br>
     <button id="chat">Chat!</button>
-    <table id="table">
-      <td></td>
-    </table>
+    <div id="messages"></div>
   </body>
+
+  <div id="dialog" title="Error">
+    <p id="dialogMessage"></p>
+  </div>
 </html>

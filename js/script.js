@@ -1,19 +1,34 @@
+
+//Set reference to Firebase
 var myFirebaseRef = new Firebase("https://testchat5000.firebaseio.com/");
 var userName;
 
+//Verify if user is logged in. If they are set userName to use in posts.
 function authDataCallback(authData) {
   if (authData) {
     console.log("User " + authData.uid + " is logged in with " + authData.provider);
     userName = authData.password.email.replace(/@.*/, '');
+    document.getElementById('notice').innerHTML="You are logged in.";
+    document.getElementById('notice').style.backgroundColor = "green";
   } else {
     console.log("User is logged out");
+    userName = undefined;
+    document.getElementById('notice').innerHTML="Please log in to chat.";
+    document.getElementById('notice').style.backgroundColor = "red";
   }
 }
 
-
-var userName;
+//Push the message to firebase
 function chat() {
   var message = document.getElementById('message').value;
+
+  if(userName === undefined) {
+    $(function() {
+      $("#dialogMessage").text("Must be logged in to chat.");
+      $("#dialog").dialog();
+    });
+  }
+
 
   myFirebaseRef.push({
     userName: userName,
@@ -21,6 +36,7 @@ function chat() {
   });
 }
 
+//Create user using Email and Password Auth built into Firebase
 function createUser() {
   myFirebaseRef.createUser({
         email    : document.getElementById("userName").value,
@@ -28,6 +44,10 @@ function createUser() {
   }, function(error, userData) {
       if (error) {
         console.log("Error creating user:", error);
+        $(function() {
+          $("#dialogMessage").text(error);
+          $("#dialog").dialog();
+        });
       } else {
         console.log("Successfully created user account with uid:", userData.uid);
       }
@@ -35,31 +55,37 @@ function createUser() {
 }
 
 $(document).ready(function(){
+  //Notify user if they are logged in or not.
   myFirebaseRef.onAuth(authDataCallback);
 
+  //Fill the div with all the messages
   myFirebaseRef.on("child_added", function(snapshot, prevChildKey) {
     var value = snapshot.val();
-    $("td").append("<p>" + value["userName"]+ " Says: " + value["text"] + "</p>");
+    $("#messages").append('<p class="message"> ' + value["userName"]+ ' Says: ' + value["text"] + '</p>');
   });
 
-$("#login").click(function(){
-  myFirebaseRef.authWithPassword({
-    email    : document.getElementById("userName").value,
-    password : document.getElementById("password").value
-  }, function(error, authData) {
-              if (error) {
-          console.log("Login Failed!", error);
-        } else {
-          console.log("Authenticated successfully with payload:", authData);
-          userName = authData.password.email.replace(/@.*/, '');
-        }
-  }, {
-    remember: "none"
-  });
-});
-  $("#chat").click(function(){
-
-      chat();
+  //Log in user for Firebase with email and password Auth built into Firebase
+  $("#login").click(function(){
+    myFirebaseRef.authWithPassword({
+      email    : document.getElementById("userName").value,
+      password : document.getElementById("password").value
+    }, function(error, authData) {
+                if (error) {
+            console.log("Login Failed!", error);
+            $(function() {
+              $("#dialogMessage").text(error);
+              $("#dialog").dialog();
+            });
+          } else {
+            console.log("Authenticated successfully with payload:", authData);
+            userName = authData.password.email.replace(/@.*/, '');
+          }
+    }, {
+      remember: "none"
     });
+  });
 
+  $("#chat").click(function(){
+      chat();
+  });
 });
