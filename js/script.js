@@ -50,6 +50,10 @@ function createUser() {
         });
       } else {
         console.log("Successfully created user account with uid:", userData.uid);
+        $(function() {
+          $("#dialogMessage").text("Successfully Created User. Please Login to chat");
+          $("#dialog").dialog();
+        });
       }
   });
 }
