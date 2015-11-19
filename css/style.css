@@ -3,6 +3,8 @@
 }
 
 .paperCard {
-  width: 100px;
+  width: 300px;
   align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
