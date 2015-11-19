@@ -1,0 +1,23 @@
+{
+  "name": "Firebase Chat",
+  "homepage": "https://github.com/jamescha/Firebase-Chat",
+  "authors": [
+    "James Cha"
+  ],
+  "description": "A simple chat using firebase",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-button": "PolymerElements/paper-button#~1.0.8",
+    "paper-input": "PolymerElements/paper-input#~1.1.1",
+    "polymer": "Polymer/polymer#^1.2.0"
+  }
+}
