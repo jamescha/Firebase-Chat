@@ -18,14 +18,16 @@
     <div>
       <h1>Login</h1>
       <hr/>
-      <h2>Username (Email Address)</h2>
-      <paper-input label="userName" id="userName"></paper-input>
-      <h2>Password</h2>
-      <paper-input type="password" label="password" id="password"></paper-input>
-      <br>
-      <paper-button raised id="login">Login</paper-button>
-      <br>
-      <paper-button raised id="createNewUser" onclick="createUser()">Create New User</paper-button>
+      <div class="vertical-section">
+        <h2>Username (Email Address)</h2>
+        <paper-input label="userName" id="userName"></paper-input>
+        <h2>Password</h2>
+        <paper-input type="password" label="password" id="password"></paper-input>
+        <br>
+        <paper-button raised id="login">Login</paper-button>
+        <br>
+        <paper-button raised id="createNewUser" onclick="createUser()">Create New User</paper-button>
+      </div>
       <h1>Message</h1>
       <h2 id="notice"><h2>
       <hr/>
