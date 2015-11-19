@@ -1,3 +1,8 @@
 .message {
   color:black;
 }
+
+.paperCard {
+  width: 100px;
+  align-items: center;
+}
