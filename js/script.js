@@ -65,8 +65,10 @@ $(document).ready(function(){
   //Fill the div with all the messages
   myFirebaseRef.on("child_added", function(snapshot, prevChildKey) {
     var value = snapshot.val();
-    $("#messages").append('<paper-card class="paperCard"> <p class="message">' +
-     value["userName"] + ' Says: ' + value["text"] + '</p> </paper-card> <br>');
+    //$("#messages").append('<paper-card class="paperCard"> <p class="message">' +
+     //value["userName"] + ' Says: ' + value["text"] + '</p> </paper-card> <br>');
+   $("#messages").append('<p class="message">' +
+     value["userName"] + ' Says: ' + value["text"] + '</p> <br>');
   });
 
   //Log in user for Firebase with email and password Auth built into Firebase
