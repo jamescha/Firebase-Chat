@@ -35,7 +35,11 @@
       <paper-input label="message" id="message"></paper-input>
     </div>
     <paper-button raised id="chat">Chat!</paper-button>
-    <div id="messages"></div>
+    <paper-dialog-impl>
+      <paper-dialog-scrollable>
+        <div id="messages"></div>
+      </paper-dialog-scrollable>
+    </paper-dialog-impl>
   </body>
 
   <div id="dialog" title="Error">
