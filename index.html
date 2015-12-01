@@ -11,6 +11,7 @@
     <link rel="import" href="bower_components/paper-button/paper-button.html">
     <link rel="import" href="bower_components/paper-card/paper-card.html">
     <link rel="import" href="bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+    <link rel="import" href="bower_components/paper-dialog-behavior/paper-dialog-behavior.html">
     <link rel="import" href="html/gelati.html">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="js/script.js"></script>
@@ -32,12 +33,15 @@
       </div>
       <h1>Message</h1>
       <h2 id="notice"><h2>
+      <hr/>
       <paper-input label="message" id="message"></paper-input>
     </div>
     <paper-button raised id="chat">Chat!</paper-button>
-    <paper-dialog-scrollable>
-      <div id="messages"></div>
-    </paper-dialog-scrollable>
+    <paper-dialog-impl>
+      <paper-dialog-scrollable>
+        <div id="messages"></div>
+      </paper-dialog-scrollable>
+    </paper-dialog-impl>
   </body>
 
   <div id="dialog" title="Error">
